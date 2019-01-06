@@ -7,14 +7,15 @@ The StarDict file format is rather convoluted and requires *multiple*, that's ri
 
 How to Use
 ----------
-Using the CLI is dead simple. There's two ways you can use it:
+> Before you begin, be sure to download and install [Bazel](https://bazel.build)
+
+Running the program is very simple. There's two ways you can use it:
 
 ### 1. With a Single Argument
-By simply providing the path to a StarDict archive, the CLI will return an example HTML entry stored in that file that will 
-help you in crafting the regex for conversion. Here's an example:
+By simply providing the path to a StarDict archive, the CLI will return an example HTML entry stored in that file that will help you in crafting the regex for conversion. Here's an example:
 
 ```
-$ stardict2odict.jar ./babylon-korean-english.tar.bz2
+$ bazel run ./babylon-korean-english.tar.bz2
 Processing dictionary file...
 Found example entry HTML: <font color="blue">adj.</font> aspen
 ```
@@ -53,5 +54,5 @@ match: # Each number corresponds to a 1-based group number in the above regex
 Now, to convert the file to ODXML using the following command:
 
 ```bash
-$ stardict2odict.jar ./zh_en.tar.bz2 ./zh_en.xml --config config.yml 
+$ bazel run ./zh_en.tar.bz2 ./zh_en.xml --config config.yml 
 ```
