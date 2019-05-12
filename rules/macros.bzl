@@ -1,5 +1,6 @@
 # load("@bazel_tools//tools/build_defs/repo:http.bzl", "new_http_archive")
 load("@bazel_tools//tools/build_defs/repo:java.bzl", "java_import_external")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def remote_jar(name, hash, deps = [], artifact = None, url = None):
     if artifact == None and url == None:
@@ -30,7 +31,7 @@ def remote_jar(name, hash, deps = [], artifact = None, url = None):
     )
 
 def remote_zipped_jar(name, url, hash, jar, strip_prefix, deps = []):
-    native.new_http_archive(
+    http_archive(
         name = name, 
         build_file_content = '\n'.join([
             "package(default_visibility = [\"//visibility:public\"])",
